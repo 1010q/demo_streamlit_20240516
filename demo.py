@@ -45,4 +45,5 @@ def stream_data():
 if st.button("Stream data"):
     st.write_stream(stream_data)
 
-st.image('/Applications/MAMP/htdocs/photo-1548407260-da850faa41e3.jpeg', caption='Sunrise by the mountains')
+st.image('/Users/youta/demo_streamlit_20240516/photo-1548407260-da850faa41e3.jpeg', caption='Sunrise by the mountains')
+st.write("キレイな風景だね＾＾")
