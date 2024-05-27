@@ -5,6 +5,24 @@ import streamlit as st
 import numpy as np
 import time
 
+def multicolor_picker(label, default_values):
+    num_colors = st.sidebar.number_input(label=label, min_value=1, max_value=10, value=len(default_values), step=1)
+    colors = []
+    for i in range(num_colors):
+        color = st.sidebar.color_picker(f'色 {i+1}', value=default_values[i % len(default_values)])
+        colors.append(color)
+    return colors
+
+st.title('複数の文字色の変更')
+
+text_colors = multicolor_picker('文字色を選択してください', ['#000000', '#FF0000'])
+
+text = "複数の文字色を交互に適用することができるよ！　じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのうんらいまつふうらいまつくうねるところにすむところぱいぽぱいぽみかんぶらじるあめりかかなだるーまにあかしおぺあしんたっくすえらー"
+styled_text = ""
+for i, char in enumerate(text):
+    styled_text += f'<span style="color:{text_colors[i % len(text_colors)]}">{char}</span>'
+st.markdown(styled_text, unsafe_allow_html=True)
+
 on = st.toggle("背景をグレーにする")
 css = ""
 if on:
